@@ -1,6 +1,5 @@
-require "user.vimrc"
+--require "user.vimrc"
 
-vim.cmd('colorscheme kanagawa')
 
 local modules = {
 	"user.key",
@@ -15,6 +14,7 @@ for k, v in pairs(modules) do
 end
 
 
+vim.cmd('colorscheme kanagawa')
 
 require("mason").setup()
 require("mason-lspconfig").setup()

@@ -10,5 +10,5 @@ stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/).
 ```shell
 $ git clone git@github.com:jaga8285/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
-$ stow neovim kitty #etc...
+$ stow --dotfiles neovim kitty #etc...
 ```
