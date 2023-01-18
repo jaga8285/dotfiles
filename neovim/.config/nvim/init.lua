@@ -25,7 +25,7 @@ rt.setup({
   server = {
     on_attach = function(_, bufnr)
       -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      vim.keymap.set("n", "<C-M>", rt.hover_actions.hover_actions, { buffer = bufnr })
       -- Code action groups
       vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
     end,
@@ -50,6 +50,13 @@ cmp.setup({
     ['<C-S-f>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-a>'] = cmp.mapping.complete({
+      config = {
+        sources = {
+          {name = 'nvim_lsp'}
+        }
+      }
+    }),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
@@ -63,7 +70,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
     { name = 'buffer', keyword_length = 2 },        -- source current buffer
     { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
-    { name = 'calc'},                               -- source for math calculation
+    { name = 'crates'},     
   },
   window = {
       completion = cmp.config.window.bordered(),
@@ -83,3 +90,6 @@ cmp.setup({
       end,
   },
 })
+
+require("nvim-tree").setup()
+require("crates").setup()

@@ -1,5 +1,6 @@
 
 local opts = { noremap = true, silent = true }
+local crates = require('crates')
 
 
 -- Shorten function name
@@ -65,15 +66,40 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
-keymap("n", "<leader>ve", ":Lex 30 " .. vim.fn.stdpath("config") .. "<CR>", opts) 
+keymap("n", "<leader>ve", ":NvimTreeOpen " .. vim.fn.stdpath("config") .. "<CR>", opts) 
 keymap("n", "<leader>vs", ":luafile " .. vim.fn.stdpath("config") .. "/init.lua<CR>", opts) 
 
+keymap("n", "<C-P>", "<C-]>", opts) 
+
+keymap("n", "<leader>nh", "<Cmd>nohl<Cr>", opts)
 keymap("n", "<leader>y", "\"+y", opts)
 keymap("v", "<leader>y", "\"+y", opts)
 keymap("n", "<leader>p", "\"+p", opts)
 keymap("v", "<leader>p", "\"+p", opts)
 keymap("n", "<leader>P", "\"+P", opts)
 keymap("v", "<leader>P", "\"+P", opts)
+
+keymap('n', '<leader>ct', crates.toggle, opts)
+keymap('n', '<leader>cr', crates.reload, opts)
+
+keymap('n', '<leader>cv', crates.show_versions_popup, opts)
+keymap('n', '<leader>cf', crates.show_features_popup, opts)
+keymap('n', '<leader>cd', crates.show_dependencies_popup, opts)
+
+keymap('n', '<leader>cu', crates.update_crate, opts)
+keymap('v', '<leader>cu', crates.update_crates, opts)
+keymap('n', '<leader>ca', crates.update_all_crates, opts)
+keymap('n', '<leader>cU', crates.upgrade_crate, opts)
+keymap('v', '<leader>cU', crates.upgrade_crates, opts)
+keymap('n', '<leader>cA', crates.upgrade_all_crates, opts)
+
+keymap('n', '<leader>cH', crates.open_homepage, opts)
+keymap('n', '<leader>cR', crates.open_repository, opts)
+keymap('n', '<leader>cD', crates.open_documentation, opts)
+
+
+
+keymap('n', '<leader>e', "<Cmd>NvimTreeToggle<Cr>", opts)
 
 -- Fix common typos
 vim.cmd([[
