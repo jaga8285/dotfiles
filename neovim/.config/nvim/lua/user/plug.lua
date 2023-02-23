@@ -50,11 +50,8 @@ return require('packer').startup(function()
     use 'tanvirtin/monokai.nvim'
     use 'rebelot/kanagawa.nvim'
     use 'neovim/nvim-lspconfig' 
-    use {
-      "simrat39/rust-tools.nvim",
-      requires = "neovim/nvim-lspconfig",
-      after = "nvim-lspconfig"
-    }
+    use 'neovim/nvim-lspconfig'
+    use 'simrat39/rust-tools.nvim'
 
     -- Completion framework:
     use 'hrsh7th/nvim-cmp' 
